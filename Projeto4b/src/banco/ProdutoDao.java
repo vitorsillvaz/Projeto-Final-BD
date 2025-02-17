@@ -73,7 +73,7 @@ public class ProdutoDao {
 
 	}
 
-	public List<Produto> buscarProduto(String nome, String endereco, String telefone, String produto, String validade)
+	public List<Produto> buscarProduto(String nome, String produto, String validade)
 			throws SQLException, ClassNotFoundException {
 		
 		Connection conexao = FabricaConexao.criarConexao();
@@ -84,13 +84,6 @@ public class ProdutoDao {
 			sql += " AND c.nome LIKE ? ";
 		}
 
-		if (endereco != null && !endereco.isEmpty()) {
-			sql += " AND c.endereco = ? ";
-		}
-
-		if (telefone != null && !telefone.isEmpty()) {
-			sql += " AND c.telefone = ? ";
-		}
 		if (produto != null && !produto.isEmpty()) {
 			sql += " AND p.nome = ? ";
 		}
@@ -103,17 +96,6 @@ public class ProdutoDao {
 
 		if (nome != null && !nome.isEmpty()) {
 			comando.setString(i, "%" + nome.toUpperCase() + "%");
-			i++;
-		}
-
-		if (endereco != null && !endereco.isEmpty()) {
-			comando.setString(i, endereco);
-			i++;
-		}
-
-
-		if (telefone != null && !telefone.isEmpty()) {
-			comando.setString(i, telefone);
 			i++;
 		}
 		

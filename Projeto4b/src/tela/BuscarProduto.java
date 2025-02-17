@@ -132,7 +132,7 @@ public class BuscarProduto extends JFrame {
 
 		tabelaProdutos = new JTable();
 		tabelaProdutos.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Endereço", "Nome", "Telefone", "Produto", "Validade" }));
+				new String[] { "Produto", "Ano de Validade" }));
 		scrollPane.setViewportView(tabelaProdutos);
 
 	}
@@ -141,7 +141,7 @@ public class BuscarProduto extends JFrame {
 
 		ProdutoDao dao = new ProdutoDao();
 
-		List<Cliente> produtosEncontrados = new ArrayList<Cliente>();
+		List<Produto> produtosEncontrados = new ArrayList<Produto>();
 
 		produtosEncontrados = dao.buscarProduto(textFieldNome.getText(), textFieldValidade.getText(), textFieldCliente.getText());
 
