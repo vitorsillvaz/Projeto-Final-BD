@@ -16,7 +16,6 @@ public class Cliente implements Comparable<Cliente>{
     private Produto produto; // Criando a produto dentro de cliente
 
 
-
 	public int getId() {
 		return id;
 	}

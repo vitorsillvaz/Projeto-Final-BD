@@ -31,6 +31,7 @@ import java.awt.Color;
 
 public class CadastrarProduto extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textFieldNome;
 	private JTextField textFieldValidade;

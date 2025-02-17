@@ -108,8 +108,4 @@ public class Principal extends JFrame {
 		lblNewLabel.setBounds(0, 0, 616, 346);
 		contentPane.add(lblNewLabel);
 	}
-
-	protected void buscarProduto() {
-		
-	}
 }

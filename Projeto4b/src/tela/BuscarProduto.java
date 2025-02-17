@@ -50,7 +50,7 @@ public class BuscarProduto extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastrarCliente frame = new CadastrarCliente();
+					CadastrarProduto frame = new CadastrarProduto();
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -144,7 +144,7 @@ public class BuscarProduto extends JFrame {
 
 		List<Produto> produtosEncontrados = new ArrayList<Produto>();
 
-		produtosEncontrados = dao.buscarProduto(textFieldNome.getText(), textFieldValidade.getText(), textFieldCliente.getText());
+		produtosEncontrados = dao.buscarProduto(textFieldNome.getText(), textFieldValidade.getText());
 
 		DefaultTableModel modelo = new DefaultTableModel(
 				new String[] { "Produto", "Ano de Validade" }, 0);
@@ -153,9 +153,7 @@ public class BuscarProduto extends JFrame {
 
 			Produto produto = produtosEncontrados.get(i);
 	      			
-			modelo.addRow(new String[] { produto.getNomeProduto(),produto.getCliente().getNome(),
-					
-					String.valueOf(String.valueOf(produto.getValidade())) });
+			modelo.addRow(new String[] { produto.getNomeProduto(),String.valueOf(String.valueOf(produto.getValidade())) });
 		}
 
 		tabelaProdutos.setModel(modelo);

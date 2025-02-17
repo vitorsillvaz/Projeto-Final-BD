@@ -68,17 +68,14 @@ public class ProdutoDao {
 
 	}
 
-	public List<Produto> buscarProduto(String nome, String produto, String validade)
+	public List<Produto> buscarProduto(String produto, String validade)
 			throws SQLException, ClassNotFoundException {
 		
 		Connection conexao = FabricaConexao.criarConexao();
 		
-		String sql = " SELECT c.id_cliente, p.id_produto, c.nome, c.endereco, c.telefone, p.nome as nomed, p.validade FROM cliente c join produto p on c.id_cliente = p.id_produto WHERE 1 = 1 ";
+		String sql = " SELECT p.id_produto, p.nome as nomed, p.validade FROM cliente c join produto p on c.id_cliente = p.id_produto WHERE 1 = 1 ";
 
-		if (nome != null && !nome.isEmpty()) {
-			sql += " AND c.nome LIKE ? ";
-		}
-
+		
 		if (produto != null && !produto.isEmpty()) {
 			sql += " AND p.nome = ? ";
 		}
@@ -89,10 +86,6 @@ public class ProdutoDao {
 		PreparedStatement comando = conexao.prepareStatement(sql.toString());
 		int i = 1;
 
-		if (nome != null && !nome.isEmpty()) {
-			comando.setString(i, "%" + nome.toUpperCase() + "%");
-			i++;
-		}
 		
 		if (produto != null && !produto.isEmpty()) {
 			comando.setString(i, produto);

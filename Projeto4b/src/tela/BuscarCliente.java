@@ -66,7 +66,7 @@ public class BuscarCliente extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 773, 349);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 204, 51));
+		contentPane.setBackground(new Color(255, 153, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -82,9 +82,9 @@ public class BuscarCliente extends JFrame {
 		lblNome.setBounds(10, 45, 46, 14);
 		panel.add(lblNome);
 
-		JLabel lblMatricula = new JLabel("Endereço:");
-		lblMatricula.setBounds(10, 93, 60, 14);
-		panel.add(lblMatricula);
+		JLabel lblEndereco = new JLabel("Endereço:");
+		lblEndereco.setBounds(10, 93, 60, 14);
+		panel.add(lblEndereco);
 
 		textFieldNome = new JTextField();
 		textFieldNome.setBounds(80, 42, 125, 20);
@@ -132,7 +132,7 @@ public class BuscarCliente extends JFrame {
 
 		tabelaClientes = new JTable();
 		tabelaClientes.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Endereço", "Nome", "Telefone", "Produto", "Validade" }));
+				new String[] { "Endereço", "Nome", "Telefone"}));
 		scrollPane.setViewportView(tabelaClientes);
 
 	}
@@ -146,15 +146,12 @@ public class BuscarCliente extends JFrame {
 		clientesEncontrados = dao.buscarClientes(textFieldNome.getText(), textFieldEndereco.getText(), textFieldTelefone.getText());
 
 		DefaultTableModel modelo = new DefaultTableModel(
-				new String[] { "Endereço", "Nome", "Telefone", "Produto", "Validade" }, 0);
+				new String[] { "Endereço", "Nome", "Telefone" }, 0);
 
 		for (int i = 0; i < clientesEncontrados.size(); i++) {
-
 			Cliente cliente = clientesEncontrados.get(i);
 	      			
-			modelo.addRow(new String[] { cliente.getEndereco(), cliente.getNome(), cliente.getTelefone(),
-					cliente.getProduto().getNomeProduto(),
-					String.valueOf(String.valueOf(cliente.getProduto().getValidade())) });
+			modelo.addRow(new String[] { cliente.getEndereco(), cliente.getNome(), cliente.getTelefone() });
 		}
 
 		tabelaClientes.setModel(modelo);
