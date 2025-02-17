@@ -19,13 +19,14 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import banco.ClienteDao;
+import banco.ProdutoDao;
 import dominio.Cliente;
 import dominio.Produto;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 
-public class BuscarCliente extends JFrame {
+public class BuscarProduto extends JFrame {
 
 	/**
 	 * 
@@ -33,14 +34,14 @@ public class BuscarCliente extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textFieldNome;
-	private JTextField textFieldEndereco;
+	private JTextField textFieldValidade;
 
 	private JPanel panel_1;
 	private JScrollPane scrollPane;
 
 	private JButton btnBuscar;
-	private JTable tabelaClientes;
-	private JTextField textFieldTelefone;
+	private JTable tabelaProdutos;
+	private JTextField textFieldCliente;
 
 	/**
 	 * Launch the application.
@@ -62,7 +63,7 @@ public class BuscarCliente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public BuscarCliente() {
+	public BuscarProduto() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 773, 383);
 		contentPane = new JPanel();
@@ -72,7 +73,7 @@ public class BuscarCliente extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Cadastrar Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Cadastrar Produto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel.setBounds(10, 29, 231, 267);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -81,7 +82,7 @@ public class BuscarCliente extends JFrame {
 		lblNome.setBounds(10, 45, 46, 14);
 		panel.add(lblNome);
 
-		JLabel lblMatricula = new JLabel("Endereço:");
+		JLabel lblMatricula = new JLabel("Validade");
 		lblMatricula.setBounds(10, 93, 60, 14);
 		panel.add(lblMatricula);
 
@@ -90,16 +91,16 @@ public class BuscarCliente extends JFrame {
 		panel.add(textFieldNome);
 		textFieldNome.setColumns(10);
 
-		textFieldEndereco = new JTextField();
-		textFieldEndereco.setColumns(10);
-		textFieldEndereco.setBounds(80, 87, 125, 20);
-		panel.add(textFieldEndereco);
+		textFieldValidade = new JTextField();
+		textFieldValidade.setColumns(10);
+		textFieldValidade.setBounds(80, 87, 125, 20);
+		panel.add(textFieldValidade);
 
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					buscarCliente();
+					buscarProduto();
 				} catch (ClassNotFoundException | SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -108,19 +109,19 @@ public class BuscarCliente extends JFrame {
 		btnBuscar.setBounds(80, 192, 125, 23);
 		panel.add(btnBuscar);
 
-		textFieldTelefone = new JTextField();
-		textFieldTelefone.setColumns(10);
-		textFieldTelefone.setBounds(80, 143, 125, 20);
-		panel.add(textFieldTelefone);
+		textFieldCliente = new JTextField();
+		textFieldCliente.setColumns(10);
+		textFieldCliente.setBounds(80, 143, 125, 20);
+		panel.add(textFieldCliente);
 
-		JLabel lblTelefone = new JLabel("Telefone:");
+		JLabel lblTelefone = new JLabel("Cliente");
 		lblTelefone.setBounds(10, 146, 46, 14);
 		panel.add(lblTelefone);
 
 		panel_1 = new JPanel();
 		panel_1.setBorder(
-				new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Listagem de Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_1.setBounds(251, 29, 485, 295);
+				new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Listagem de Produto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_1.setBounds(251, 29, 485, 267);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
@@ -129,34 +130,34 @@ public class BuscarCliente extends JFrame {
 		scrollPane.setBounds(20, 26, 431, 215);
 		panel_1.add(scrollPane);
 
-		tabelaClientes = new JTable();
-		tabelaClientes.setModel(new DefaultTableModel(new Object[][] {},
+		tabelaProdutos = new JTable();
+		tabelaProdutos.setModel(new DefaultTableModel(new Object[][] {},
 				new String[] { "Endereço", "Nome", "Telefone", "Produto", "Validade" }));
-		scrollPane.setViewportView(tabelaClientes);
+		scrollPane.setViewportView(tabelaProdutos);
 
 	}
 
-	protected void buscarCliente() throws ClassNotFoundException, SQLException {
+	protected void buscarProduto() throws ClassNotFoundException, SQLException {
 
-		ClienteDao dao = new ClienteDao();
+		ProdutoDao dao = new ProdutoDao();
 
-		List<Cliente> clientesEncontrados = new ArrayList<Cliente>();
+		List<Cliente> produtosEncontrados = new ArrayList<Cliente>();
 
-		clientesEncontrados = dao.buscarClientes(textFieldNome.getText(), textFieldEndereco.getText(), textFieldTelefone.getText());
+		produtosEncontrados = dao.buscarProduto(textFieldNome.getText(), textFieldValidade.getText(), textFieldCliente.getText());
 
 		DefaultTableModel modelo = new DefaultTableModel(
-				new String[] { "Endereço", "Nome", "Telefone", "Produto", "Validade" }, 0);
+				new String[] { "Produto", "Ano de Validade" }, 0);
 
-		for (int i = 0; i < clientesEncontrados.size(); i++) {
+		for (int i = 0; i < produtosEncontrados.size(); i++) {
 
-			Cliente cliente = clientesEncontrados.get(i);
+			Produto produto = produtosEncontrados.get(i);
 	      			
-			modelo.addRow(new String[] { cliente.getEndereco(), cliente.getNome(), cliente.getTelefone(),
-					cliente.getProduto().getNomeProduto(),
-					String.valueOf(String.valueOf(cliente.getProduto().getValidade())) });
+			modelo.addRow(new String[] { produto.getNomeProduto(),produto.getCliente().getNome(),
+					
+					String.valueOf(String.valueOf(produto.getValidade())) });
 		}
 
-		tabelaClientes.setModel(modelo);
+		tabelaProdutos.setModel(modelo);
 
 	}
 

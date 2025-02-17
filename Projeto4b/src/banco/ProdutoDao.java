@@ -16,6 +16,7 @@ public class ProdutoDao {
 
 	
 	public void cadastrarProduto(Produto d) throws SQLException, ClassNotFoundException {
+		
 		Connection conexao = FabricaConexao.criarConexao();
 
 	
@@ -42,7 +43,6 @@ public class ProdutoDao {
 	public List<Produto> buscarProdutoPeloNome(String nome) throws SQLException, ClassNotFoundException {
 
 		Connection conexao = FabricaConexao.criarConexao();
-
 		String sql = " SELECT * FROM produto WHERE 1 = 1 ";
 
 		if (nome != null && !nome.isEmpty()) {
@@ -132,6 +132,7 @@ public class ProdutoDao {
 		List<Produto> produtosCadastrados = new ArrayList<>();
 
 		while (resultado.next()) {
+			
 			Cliente c = new Cliente();
 			c.setId(resultado.getInt("id_aluno"));
 			c.setNome(resultado.getString("nome"));

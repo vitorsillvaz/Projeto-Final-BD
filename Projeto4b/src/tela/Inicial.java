@@ -45,12 +45,13 @@ public class Inicial extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 564, 430);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(204, 255, 204));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Cadastrar Usuário");
+		JButton btnNewButton = new JButton("Cadastrar Cliente");
 		btnNewButton.setFont(UIManager.getFont("Button.font"));
 		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setBackground(new Color(255, 255, 255));

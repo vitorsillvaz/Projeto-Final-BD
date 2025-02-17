@@ -2,6 +2,11 @@ package dominio;
 
 public class Produto {
 
+	@Override
+	public String toString() {
+		return nomeProduto + " ( " + "Ano de val. :" + validade + " ) ";
+	}
+	
 	private int idProduto;
 	private String nomeProduto;
 	private int validade;

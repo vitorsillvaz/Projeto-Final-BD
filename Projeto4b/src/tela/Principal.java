@@ -92,7 +92,11 @@ public class Principal extends JFrame {
 		JButton btnBuscarProduto = new JButton("Buscar Produto");
 		btnBuscarProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				buscarProduto();
+				BuscarProduto bp = new BuscarProduto();
+				bp.setLocationRelativeTo(null);
+				bp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				bp.setVisible(true);
+
 			}
 		});
 		btnBuscarProduto.setBackground(Color.WHITE);
