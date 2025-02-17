@@ -64,8 +64,9 @@ public class BuscarCliente extends JFrame {
 	 */
 	public BuscarCliente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 773, 383);
+		setBounds(100, 100, 773, 349);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 204, 51));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -120,7 +121,7 @@ public class BuscarCliente extends JFrame {
 		panel_1 = new JPanel();
 		panel_1.setBorder(
 				new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Listagem de Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_1.setBounds(251, 29, 485, 295);
+		panel_1.setBounds(251, 29, 485, 267);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
@@ -159,5 +160,4 @@ public class BuscarCliente extends JFrame {
 		tabelaClientes.setModel(modelo);
 
 	}
-
 }

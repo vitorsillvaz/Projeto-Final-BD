@@ -45,7 +45,7 @@ public class Inicial extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 564, 430);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 204, 102));
+		contentPane.setBackground(new Color(255, 153, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);

@@ -18,10 +18,7 @@ public class ProdutoDao {
 	public void cadastrarProduto(Produto d) throws SQLException, ClassNotFoundException {
 		
 		Connection conexao = FabricaConexao.criarConexao();
-
-	
-		System.out.println("Inserindo dados...");
-
+		
 		String sql = " INSERT INTO produto (nome,validade,id_cliente) VALUES (?,?,?) ";
 
 		PreparedStatement comando = conexao.prepareStatement(sql);
@@ -29,8 +26,6 @@ public class ProdutoDao {
 		comando.setInt(2, d.getValidade());
 		comando.setInt(3, d.getCliente().getId());
 		comando.execute();
-
-		System.out.println("Fechando Conexão");
 
 		comando.close();
 		conexao.close();
