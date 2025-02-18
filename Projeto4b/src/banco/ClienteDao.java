@@ -47,12 +47,9 @@ public class ClienteDao {
 
 	public List<Cliente> buscarClientes(String nome, String endereco, String telefone)
 	        throws SQLException, ClassNotFoundException {
+		
 	    Connection conexao = FabricaConexao.criarConexao();
-	    
-	    String sql = " SELECT c.id_cliente, p.id_produto, c.nome, c.endereco, c.telefone, p.nome AS nomed, p.validade " +
-	                 " FROM cliente c " +
-	                 " JOIN produto p ON c.id_cliente = p.id_cliente " +
-	                 " WHERE 1 = 1 ";
+	    String sql = " SELECT * FROM cliente WHERE 1 = 1 ";
 
 	    if (nome != null && !nome.isEmpty()) {
 	        sql += " AND c.nome LIKE ? ";
@@ -91,14 +88,6 @@ public class ClienteDao {
 	        c.setNome(resultado.getString("nome"));
 	        c.setEndereco(resultado.getString("endereco"));
 	        c.setTelefone(resultado.getString("telefone"));
-	        
-	        Produto p = new Produto();
-	        p.setIdProduto(resultado.getInt("id_produto"));
-	        p.setNomeProduto(resultado.getString("nomed"));
-	        p.setValidade(resultado.getInt("validade"));
-	        p.setCliente(c);
-
-	        c.setProduto(p);
 	        
 	        clientesCadastrados.add(c);
 	    }

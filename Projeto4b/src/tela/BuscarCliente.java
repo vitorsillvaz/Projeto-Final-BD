@@ -73,7 +73,7 @@ public class BuscarCliente extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Cadastrar Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBorder(new TitledBorder(null, "Cadastrar Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel.setBounds(10, 29, 231, 267);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -120,7 +120,7 @@ public class BuscarCliente extends JFrame {
 
 		panel_1 = new JPanel();
 		panel_1.setBorder(
-				new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Listagem de Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				new TitledBorder(null, "Listagem de Clientes", TitledBorder.LEADING, TitledBorder.TOP, null,null));
 		panel_1.setBounds(251, 29, 485, 267);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
@@ -132,7 +132,7 @@ public class BuscarCliente extends JFrame {
 
 		tabelaClientes = new JTable();
 		tabelaClientes.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Endereço", "Nome", "Telefone"}));
+				new String[] {"Nome", "Endereço",  "Telefone"}));
 		scrollPane.setViewportView(tabelaClientes);
 
 	}
@@ -146,12 +146,12 @@ public class BuscarCliente extends JFrame {
 		clientesEncontrados = dao.buscarClientes(textFieldNome.getText(), textFieldEndereco.getText(), textFieldTelefone.getText());
 
 		DefaultTableModel modelo = new DefaultTableModel(
-				new String[] { "Endereço", "Nome", "Telefone" }, 0);
+				new String[] { "Nome", "Endereço", "Telefone" }, 0);
 
 		for (int i = 0; i < clientesEncontrados.size(); i++) {
 			Cliente cliente = clientesEncontrados.get(i);
 	      			
-			modelo.addRow(new String[] { cliente.getEndereco(), cliente.getNome(), cliente.getTelefone() });
+			modelo.addRow(new String[] { cliente.getNome(),cliente.getEndereco(),  cliente.getTelefone() });
 		}
 
 		tabelaClientes.setModel(modelo);

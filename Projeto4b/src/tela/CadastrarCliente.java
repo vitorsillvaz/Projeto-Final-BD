@@ -95,7 +95,7 @@ public class CadastrarCliente extends JFrame {
 
 		JPanel panel = new JPanel();
 		panel.setBorder(
-				new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Cadastro de Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				new TitledBorder(null, "Cadastro de Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel.setBounds(10, 11, 318, 362);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -121,7 +121,7 @@ public class CadastrarCliente extends JFrame {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(
-				new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Listagem de Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				new TitledBorder(null, "Listagem de Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_1.setBounds(338, 11, 366, 362);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
