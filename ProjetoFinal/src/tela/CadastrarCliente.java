@@ -100,24 +100,24 @@ public class CadastrarCliente extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-				textFieldEndereco = new JTextField();
-				textFieldEndereco.setBounds(67, 105, 123, 20);
-				panel.add(textFieldEndereco);
-				textFieldEndereco.setToolTipText("");
-				textFieldEndereco.setColumns(10);
+		textFieldEndereco = new JTextField();
+		textFieldEndereco.setBounds(67, 105, 123, 20);
+		panel.add(textFieldEndereco);
+		textFieldEndereco.setToolTipText("");
+		textFieldEndereco.setColumns(10);
 				
-						JLabel lblMatrcula = new JLabel("Endereço");
-						lblMatrcula.setBounds(99, 80, 61, 14);
-						panel.add(lblMatrcula);
+		JLabel lblMatrcula = new JLabel("Endereço");
+		lblMatrcula.setBounds(99, 80, 61, 14);
+		panel.add(lblMatrcula);
 						
-								JLabel lblTelefone = new JLabel("Telefone");
-								lblTelefone.setBounds(109, 161, 61, 14);
-								panel.add(lblTelefone);
+		JLabel lblTelefone = new JLabel("Telefone");
+		lblTelefone.setBounds(109, 161, 61, 14);
+		panel.add(lblTelefone);
 								
-										textFieldTelefone = new JTextField();
-										textFieldTelefone.setBounds(67, 186, 123, 20);
-										panel.add(textFieldTelefone);
-										textFieldTelefone.setColumns(10);
+		textFieldTelefone = new JTextField();
+		textFieldTelefone.setBounds(67, 186, 123, 20);
+		panel.add(textFieldTelefone);
+		textFieldTelefone.setColumns(10);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(

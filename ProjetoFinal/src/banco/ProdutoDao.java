@@ -72,15 +72,13 @@ public class ProdutoDao {
 			throws SQLException, ClassNotFoundException {
 		
 		Connection conexao = FabricaConexao.criarConexao();
-		
-		String sql = " SELECT p.id_produto, p.nome as nomed, p.validade FROM cliente c join produto p on c.id_cliente = p.id_produto WHERE 1 = 1 ";
-
+		 String sql = " SELECT * FROM produto WHERE 1 = 1 ";
 		
 		if (produto != null && !produto.isEmpty()) {
-			sql += " AND p.nome = ? ";
+			sql += " AND nome = ? ";
 		}
 		if (validade != null && !validade.isEmpty()) {
-			sql += " AND p.validade = ? ";
+			sql += " AND validade = ? ";
 		}
 		
 		PreparedStatement comando = conexao.prepareStatement(sql.toString());
@@ -104,16 +102,13 @@ public class ProdutoDao {
 		while (resultado.next()) {
 			
 			Cliente c = new Cliente();
-			c.setId(resultado.getInt("id_aluno"));
+			c.setId(resultado.getInt("id_cliente"));
 			c.setNome(resultado.getString("nome"));
-			c.setEndereco(resultado.getString("endereco"));
-			c.setTelefone(resultado.getString("telefone"));
 			
-
 	        Produto p = new Produto();
 	        
 	        p.setIdProduto(resultado.getInt("id_produto"));
-	        p.setNomeProduto(resultado.getString("nomep"));
+	        p.setNomeProduto(resultado.getString("nome"));
 	        p.setValidade(resultado.getInt("validade"));
 	        p.setCliente(c);
 

@@ -52,15 +52,15 @@ public class ClienteDao {
 	    String sql = " SELECT * FROM cliente WHERE 1 = 1 ";
 
 	    if (nome != null && !nome.isEmpty()) {
-	        sql += " AND c.nome LIKE ? ";
+	        sql += " AND nome LIKE ? ";
 	    }
 
 	    if (endereco != null && !endereco.isEmpty()) {
-	        sql += " AND c.endereco = ? ";
+	        sql += " AND endereco = ? ";
 	    }
 
 	    if (telefone != null && !telefone.isEmpty()) {
-	        sql += " AND c.telefone = ? ";
+	        sql += " AND telefone = ? ";
 	    }
 
 	    PreparedStatement comando = conexao.prepareStatement(sql);
